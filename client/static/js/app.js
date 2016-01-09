@@ -1,1 +1,1 @@
-var app = angular.module("MeanAnalytics", ['directives']);
+var app = angular.module("MeanAnalytics", ['directives', 'ngResource']);
