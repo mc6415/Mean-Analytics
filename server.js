@@ -23,9 +23,19 @@ app.get('/', function (req, res) {
     res.sendFile(__dirname + '/client/views/index.html');
 });
 
+app.get('/test', function(req,res){
+    res.sendFile(__dirname + '/client/views/test.html');
+})
+
 app.get('/api/cpu', controllers.machine.cpu)
 app.get('/api/ram', controllers.machine.ram)
 app.get('/api/os', controllers.machine.opsys)
+app.get('/api/cpuload', controllers.machine.cpuload)
+app.post('/test', controllers.test.test)
+app.get('/gender/:gender', controllers.test.gender)
+app.post('/api/book', controllers.test.book)
+app.get('/api/getbookings/:film', controllers.test.getbookings)
+app.get('/api/getfilm/:film', controllers.test.getfilm)
 
 app.listen(3000, function () {
     console.log("Listening on port 3000")

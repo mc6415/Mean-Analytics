@@ -10,20 +10,18 @@
         <li><a href="#">Dashboard</a></li>
     </ul>
 
-    <div class="row-fluid">
+    <div class="row-fluid" ng-controller="BookingController as booking">
 
-        <div class="span3 statbox purple" onTablet="span6" onDesktop="span3">
-            <div class="boxchart">5,6,7,2,0,4,2,4,8,2,3,3,2</div>
-            <div class="number">854<i class="icon-arrow-up"></i></div>
-            <div class="title">visits</div>
+        <div class="span3 statbox purple" onTablet="span6" onDesktop="span3">            
+            <div class="number">{{booking.sold}}<i class="icon-arrow-up"></i></div>
+            <div class="title">sold</div>
             <div class="footer">
                 <a href="#"> read full report</a>
             </div>
         </div>
-        <div class="span3 statbox green" onTablet="span6" onDesktop="span3">
-            <div class="boxchart">1,2,6,4,0,8,2,4,5,3,1,7,5</div>
-            <div class="number">123<i class="icon-arrow-up"></i></div>
-            <div class="title">sales</div>
+        <div class="span3 statbox green" onTablet="span6" onDesktop="span3" ng-controller="FilmController as film">            
+            <div class="number">{{booking.left}}<i class="icon-arrow-up"></i></div>
+            <div class="title">Spaces Left</div>
             <div class="footer">
                 <a href="#"> read full report</a>
             </div>
@@ -47,6 +45,20 @@
 
     </div>
 
+    <div class="row-fluid hideInIE8 circleStats" ng-controller="CpuChart as chart">        
+        <div class="span2" onTablet="span3" onDesktop="span2" ng-repeat="core in machine.cores">
+            <div class="circleStatsItemBox yellow">
+                <div class="header">Core #{{core.core}}</div>
+                <canvas class="core{{core.core}}"></canvas>
+                    <div class="footer">
+                    <span class="value">
+								<span class="number">{{machine.load[$index].load}}</span>
+                    <span class="unit">%</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row-fluid">
 
         <div class="span8 widget blue" onTablet="span7" onDesktop="span8">
@@ -69,10 +81,8 @@
         <div class="sparkLineStats span4 widget green" onTablet="span5" onDesktop="span4" style="height:312px" ng-controller="RamChart">
             <h2>RAM Usage</h2>
             <hr>
-            <canvas id="ramUsage" style="margin-top:-15px;height: 85%"></canvas>
-
+            <canvas id="ramUsage"></canvas>
             <div class="clearfix"></div>
-
         </div>
         <!-- End .sparkStats -->
 

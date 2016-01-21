@@ -31,7 +31,8 @@ app.controller('RamChart', ['$resource', function ($resource) {
         pointDot: false
     })
 
-    $('#ramUsage').css("height", "85%")
+    myNewChart.resize()
+    
 
     setInterval(function () {
         ram.get(new ram, function (result) {
